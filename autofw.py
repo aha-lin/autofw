@@ -13,7 +13,6 @@ def replace_html(s):
     s = s.replace('&lt;','<')
     s = s.replace('&gt;','>')
     s = s.replace('&nbsp;',' ')
-    s = s.replace(' - 361way.com','')
     return s
 
 def get_msg_time(longtime):
@@ -57,23 +56,11 @@ def group_reply_text(msg):
         print ('[%s][%s][%s][%s][%s]' % (get_msg_time(msg['CreateTime']), groupname, username, msg['Text'], replace_html(msg['Url'])))
 
 
-# 为了让实验过程更加方便（修改程序不用多次扫码），我们使用热启动
+# 使用热启动
 itchat.auto_login(hotReload=True,enableCmdQR=2)
 
 print forward_user_name
 
 forward_user=itchat.search_friends(name=unicode(forward_user_name,'utf-8'))[0]
-
-#userName = users[0]['UserName']
-
-#friendList = itchat.get_friends(update=True)[1:]
-#for friend in friendList:
-    # 如果是演示目的，把下面的方法改为print即可
-    #    res_data=json.dumps(friend,ensure_ascii=False,encoding="utf-8")
-    #print friend
-    #forward_user.send("%s\n" % res_data)
-#itchat.send("%s\n" % res_data, toUserName=userName)
-
-
 
 itchat.run()
